@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("user.json")
       .then(response => response.json())
       .then(data => {
-        const user = data.users.find(user => admin.username === username && admin.password === password);
+        const user = data.admin.find(user => user.username === username && user.password === password);
         if (user) {
           // Generate session token and store it
           const sessionToken = Math.random().toString(36).substr(2);
