@@ -13,4 +13,10 @@
       "password": "nikhil@000"
     }
   ]
+  "admin": [
+    {
+      "username": "Nikhil",
+      "password": "nikhil@000"
+    }
+  ]
 }
