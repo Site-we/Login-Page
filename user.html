@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #1d557d;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #1d557d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #15425f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome!</h1>
+    <p>You are successfully logged in.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    // Check if session token exists in localStorage
+    const token = localStorage.getItem("sessionToken");
+
+    if (!token) {
+      location.href = "index.html"; // Redirect if not logged in
+    }
+
+    function logout() {
+      localStorage.removeItem("sessionToken");
+      sessionStorage.removeItem("user");
+      location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
