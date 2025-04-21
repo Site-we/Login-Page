@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
+  // Check if session token exists – auto redirect if already logged in
+  const existingToken = localStorage.getItem("sessionToken");
+  if (existingToken) {
+    window.location.href = "user.html";
+    return;
+  }
+
   const loginForm = document.querySelector("form");
 
   loginForm.addEventListener("submit", function(event) {
@@ -14,14 +21,12 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(data => {
         const user = data.users.find(user => user.username === username && user.password === password);
         if (user) {
-          // Generate session token and store in localStorage
+          // Generate session token and store it
           const sessionToken = Math.random().toString(36).substr(2);
           localStorage.setItem("sessionToken", sessionToken);
-
-          // Optional: store username for display
           sessionStorage.setItem("user", username);
 
-          // Redirect to user dashboard
+          // Redirect
           window.location.href = "user.html";
         } else {
           alert("Invalid username or password.");
