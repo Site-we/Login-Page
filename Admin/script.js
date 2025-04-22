@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const username = usernameInput.value.trim();
     const password = passwordInput.value;
 
-    fetch("user.json")
+    fetch("Admin.json")
       .then(response => response.json())
       .then(data => {
         const user = data.admin.find(user => user.username === username && user.password === password);
